@@ -10,9 +10,9 @@
 	--base-five: rgba(255, 255, 255, 0.05);
 	--base-ten: rgba(255, 255, 255, 0.1);
 	--base-nine: rgba(255, 255, 255, 0.09);
-	--container-color: rgb(55, 58, 60);
-	--conversation-bg: rgb(25, 38, 51);
-	--list-header-color: rgb(61, 62, 63);
+	--container-color: rgb(39, 35, 33);
+	--conversation-bg: rgb(55, 58, 60);
+	--list-header-color: rgb(51, 60, 59);
 	--blue: #0084ff;
 	--unread-bg: #365899;
 }
