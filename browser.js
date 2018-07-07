@@ -105,13 +105,12 @@ function setSidebarVisibility() {
 }
 
 ipc.on('toggle-mute-notifications', async (event, defaultStatus) => {
-	const wasPreferencesOpen = isPreferencesOpen();
-
-	if (!wasPreferencesOpen) {
+	const preferencesAreOpen = isPreferencesOpen();
+	if (!preferencesAreOpen) {
 		await openPreferences();
 	}
 
-	const notificationCheckbox = document.querySelector('._374b:nth-of-type(3) ._55sg._4ng2._kv1 input');
+	const notificationCheckbox = document.querySelector('._374b:nth-of-type(3) ._4ng2 input');
 
 	if (defaultStatus === undefined) {
 		notificationCheckbox.click();
@@ -121,7 +120,7 @@ ipc.on('toggle-mute-notifications', async (event, defaultStatus) => {
 
 	ipc.send('mute-notifications-toggled', !notificationCheckbox.checked);
 
-	if (!wasPreferencesOpen) {
+	if (!preferencesAreOpen) {
 		closePreferences();
 	}
 });
@@ -179,10 +178,7 @@ ipc.on('toggle-sidebar', () => {
 	setSidebarVisibility();
 });
 
-ipc.on('toggle-dark-mode', () => {
-	config.set('darkMode', !config.get('darkMode'));
-	setDarkMode();
-});
+ipc.on('set-dark-mode', setDarkMode);
 
 // Disabled because of https://github.com/electron/electron/issues/10886
 // and other vibrancy bugs with Electron v2
